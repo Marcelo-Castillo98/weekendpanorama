@@ -1,0 +1,78 @@
+
+<!doctype html>
+
+<html lang="es">
+    
+    <head>
+        
+        <meta charset="utf-8">
+        
+        <title> My Weekend Panorama Web - Temuco </title>              
+        <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Overpass&display=swap" rel="stylesheet">        
+        <!-- Link hacia el archivo de estilos css -->
+        <link rel="stylesheet" href="css/estilos.css">        
+        
+    </head>
+    <body>
+        
+        <div id="contenedor">
+            <div id="central">
+                <div id="login">
+                    <div class="titulo">
+                        Registrarse
+                    </div>
+                    <form id="loginform">
+                        <label for="usuario">Nombre de usuario: </label>
+                        <input type="text" name="nombre_usuario" id="nombre_usuario" required>
+
+                        <label for="password">Contraseña: </label>
+                        <input type="password" name="clave" id="clave" required>
+
+                        <label for="nombre">Nombre: </label>
+                        <input type="text"  name="nombre" id="nombre" required>
+
+                        <label for="apellido">Apellido: </label required>
+                        <input type="text"  name="apellido" id="apellido">
+                        
+                        <button type="button" onclick="envioDato()">Guardar</button>
+                    </form>
+                    <script>
+ 
+                    function envioDato(){
+                        let nombre_usuariov = document.getElementById('nombre_usuario').value;
+                        let clavev = document.getElementById('clave').value;
+                        let nombrev = document.getElementById('nombre').value;
+                        let apellidov = document.getElementById('apellido').value;
+                   
+                    
+                    let data = {
+                    nombre_usuario:nombre_usuariov,
+                    clave:clavev,
+                    nombre:nombrev,
+                    apellido:apellidov };
+
+                    console.log(data);
+                        
+                
+
+        fetch('http://localhost:8080/usuario', {
+            method: 'POST', // or 'PUT'
+            body: JSON.stringify(data), // data can be `string` or {object}!
+            headers:{
+            'Content-Type': 'application/json'
+        }
+        }).then(res => res.json())
+    
+    }
+                    
+                    </script>
+
+                    
+                </div>
+                
+            </div>
+        </div>
+            
+    </body>
+</html>
