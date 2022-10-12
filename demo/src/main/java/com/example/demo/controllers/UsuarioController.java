@@ -22,7 +22,7 @@ public class UsuarioController {
     }
 
     @PostMapping
-    public ResponseEntity<?> Registar(@RequestBody UsuarioRegistroDto dataEntrante) {
+    public ResponseEntity<?> Registar(@RequestBody UsuarioRegistroDto dataEntrante ) {
         return service.Registrar(dataEntrante);
     }
 
