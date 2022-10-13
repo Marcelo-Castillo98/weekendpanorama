@@ -1,5 +1,5 @@
 
-function validar() {
+/*function validar() {
     let num = 0;
     if (document.getElementById("nombre_usuario").value == "") {
         num++
@@ -11,7 +11,7 @@ function validar() {
    
     return num;
 }
-
+*/
 function envioDatoL() {
                      
 
@@ -42,8 +42,28 @@ function envioDatoL() {
             }
 
         })
-        .then(response => console.log(response.json()))
-        .then(hola => console.log(hola))
+        .then(response => response.json())
+        .then(json => {
+            let respuestal = [];
+            Object.entries(json).forEach(([key, value]) => {
+
+                respuestal.push(value)
+            })
+            //console.log(respuestal[3])
+            if (respuestal[3]==false){
+                swal("Ha ocurrido un error.", "clave o usuario incorrecto", "error");
+            }
+            else if(respuestal[3]==true){
+                localStorage.setItem('isLoginUser',respuestal[3]);
+                location.href = "main.html"
+            }
+            else{
+                swal("Ha ocurrido un error.", "error al acceder a la base de datos", "error");
+            }
+        });
+        //console.log(respuestal)
+        //.then(response => response.json())
+        //.then(hola => response)
             //console.log(response)
             
     }
