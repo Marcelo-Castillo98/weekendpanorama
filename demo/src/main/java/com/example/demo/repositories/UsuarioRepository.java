@@ -7,5 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.Optional;
 
 public interface UsuarioRepository extends JpaRepository<Usuario,Long> {
-
+    @Query("SELECT x FROM Usuario x where x.nombre_usuario=?1")
+    Optional<Usuario> buscarPorNombre(String nombre_usuario);
 }

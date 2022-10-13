@@ -10,7 +10,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class UsuarioServiceImpl implements UsuarioService {
@@ -46,5 +48,18 @@ public class UsuarioServiceImpl implements UsuarioService {
     public ResponseEntity<?> consultarTodo() {
         List<Usuario> usuarios= repository.findAll();
         return ResponseEntity.status(HttpStatus.OK).body(usuarios);
+    }
+    @Override
+    public ResponseEntity<?> buscarPorNombre(String nombre_usuario,String clave) {
+        Usuario usuarioEnBD=repository.buscarPorNombre(nombre_usuario).orElse(null);
+        boolean claveEnBDesIgualAClaveEntrante=usuarioEnBD.getClave().equals(clave);
+
+        Map<String,Object> respuesta=new HashMap<>();
+        respuesta.put("La clave OK",claveEnBDesIgualAClaveEntrante);
+        respuesta.put("Nombre",nombre_usuario);
+        respuesta.put("Clave en BD",usuarioEnBD.getClave());
+        respuesta.put("Clave entrante",clave);
+
+        return ResponseEntity.status(HttpStatus.OK).body(respuesta);
     }
 }

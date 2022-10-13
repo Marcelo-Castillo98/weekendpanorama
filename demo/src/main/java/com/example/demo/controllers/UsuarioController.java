@@ -25,7 +25,10 @@ public class UsuarioController {
     public ResponseEntity<?> Registar(@RequestBody UsuarioRegistroDto dataEntrante ) {
         return service.Registrar(dataEntrante);
     }
-
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody UsuarioRegistroDto dataEntrante){
+        return service.buscarPorNombre(dataEntrante.getNombre_usuario(),dataEntrante.getClave());
+    }
 }
 
 

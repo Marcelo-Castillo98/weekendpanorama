@@ -10,7 +10,7 @@
 
                         }else{
                             esigual=false
-                            swal("Las contraseñas no coinciden.", "Error al ingresar contraseña.", "error")
+                            
 
                         }
                         return esigual
@@ -38,16 +38,20 @@
                     }
 
                     function envioDato() {
+                        
                         let varpass = pass()                        
 
 
-                        if (validar() > 0 && varpass != true) {
-                            swal("Ha ocurrido un error.", "Todos los campos son obligatorios.", "error");
+                        if (validar() > 0 || varpass != true) {
+                            if(varpass != true){
+                                swal("Las contraseñas no coinciden.", "Error al ingresar contraseña.", "error")
+                            }
+                            else{
+                            swal("Ha ocurrido un error.", "Todos los campos son obligatorios.", "error");}
                         }
                         else {
 
                             let nombre_usuariov = document.getElementById('nombre_usuario').value;
-
                             let clavev = document.getElementById('clave').value;
                             let nombrev = document.getElementById('nombre').value;
                             let apellidov = document.getElementById('apellido').value;

@@ -13,5 +13,5 @@ public interface UsuarioService {
 
     public ResponseEntity<?> consultarTodo();
 
-
+    public ResponseEntity<?> buscarPorNombre(String nombre_usuario,String clave);
 }
