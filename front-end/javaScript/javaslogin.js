@@ -1,5 +1,5 @@
 
-function validar() {
+/*function validar() {
     let num = 0;
     if (document.getElementById("nombre_usuario").value == "") {
         num++
@@ -11,7 +11,7 @@ function validar() {
    
     return num;
 }
-
+*/
 function envioDatoL() {
                      
 
@@ -42,14 +42,87 @@ function envioDatoL() {
             }
 
         })
-        .then(response => console.log(response.json()))
-        .then(hola => console.log(hola))
+        .then(response => response.json())
+        .then(json => {
+            let respuestal = [];
+            Object.entries(json).forEach(([key, value]) => {
+
+                respuestal.push(value)
+            })
+            //console.log(respuestal[3])
+            if (respuestal[3]==false){
+                swal("Ha ocurrido un error.", "clave o usuario incorrecto", "error");
+            }
+            else if(respuestal[3]==true){
+                localStorage.setItem('isLoginUser',respuestal[3]);
+
+                localStorage.setItem('currenUserData',JSON.stringify(datal));
+        
+                window.location.assign("index.html");
+                
+            }
+            else{
+                swal("Ha ocurrido un error.", "error al acceder a la base de datos", "error");
+            }
+        });
+
+
+        //console.log(respuestal)
+        //.then(response => response.json())
+        //.then(hola => response)
             //console.log(response)
-            
+       
+
+
+
+
     }
 
-    
+    function verifyIsLogin(pageIsLoginRedirect = 'false',currentPage='default'){
+	
+        let isLoginUser = localStorage.getItem('isLoginUser');
+        console.log(pageIsLoginRedirect,isLoginUser,currentPage,isLoginUser == 'true');
+        
+        if(isLoginUser == 'true'){
+            console.log(pageIsLoginRedirect,isLoginUser,currentPage);
+            if(pageIsLoginRedirect == 'true'){
+                window.location.assign("index.html"); 
+            }
+            
+        }else{
+            if(currentPage != 'login'){
+                window.location.assign("Login.html");
+            }        
+        }
+        
+    }
 
+    function logoutUser(){
+
+        let isLoginUser = localStorage.getItem('isLoginUser');
+        
+        if(isLoginUser){
+            localStorage.removeItem('isLoginUser');
+            localStorage.removeItem('currenUserData');
+        }
+        window.location.assign("Login.html")   
+        
+    }
+    
+    function getDataUser(){
+        let dataUser = JSON.parse(localStorage.getItem('currenUserData'));
+        return dataUser;
+    }
+    
+    function welcomeName(){
+        let name = document.getElementById('welcomeUser');    
+        name.innerText = getDataUser().nombre;
+    }
+
+
+
+
+    
 //}
 
 //-------------
