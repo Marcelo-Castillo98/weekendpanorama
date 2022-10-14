@@ -25,7 +25,7 @@ public class LugarServiceImpl implements LugarService {
 
     @Override
     public ResponseEntity<?> consultarPrecio(Long precio) {
-        Lugar lugarEnBD=repository.buscarPorPrecio(precio).orElse(null);
-        return ResponseEntity.status(HttpStatus.OK).body(lugarEnBD);
+        List <Lugar> lugarEnBD=repository.buscarPorPrecio(precio);
+        return ResponseEntity.status(HttpStatus.OK).body( lugarEnBD);
     }
 }

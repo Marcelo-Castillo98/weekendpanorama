@@ -9,6 +9,7 @@ import javax.persistence.*;
 @Table(name="lugares")
 @Data
 @NoArgsConstructor
+
 public class Lugar {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
