@@ -32,7 +32,7 @@
         <div class="col-lg-2 col">
           <!--BOTON-->
           <div id="sesion">
-            <button type="button"  title="Cerrar Sesión" onclick="logoutUser()" name="Sesion">
+            <button type="button" style="font-size:19px;" title="Cerrar Sesión" onclick="logoutUser()" name="Sesion">
               Cerrar Sesión
             </button>
             
@@ -44,8 +44,8 @@
           <h3 class="titulo">¿Con cuánto dinero cuentas?</h3>
         </div>
         <div class="col-lg-4">
-          <div class="input-group mb-3">
-            <span class="input-group-text">$</span>
+          <div  class="input-group mb-3">
+            <span id="filter" class="input-group-text">$</span>
             <input
               type="text"
               class="form-control"
@@ -55,7 +55,7 @@
         </div>
         <div class="col-lg-4">
           <div id="panorama">
-            <button type="submit" title="Ver Panorama" name="Panorama">
+            <button type="button" id="filterb" onclick="filterByPrice()" title="Ver Panorama" name="Panorama">
               Ver mi Panorama
             </button>
           </div>
@@ -72,7 +72,7 @@
 
     </div>
     
-    <div id="result" class="container; col-lg-3"  style="display:flex; gap:5px; justify-content:center;
+    <div id="result" class="container; col-lg-3"  style="display:flex; gap:15px; justify-content:center;
     flex-wrap: wrap;padding-left: 0;margin-top:30px; height: 30%; width: 100%">   
      <script>
       function mostrartodo(){
@@ -90,7 +90,44 @@
           let preciolugar=data.precio;
           let imglugar=data.img;
 
-          let tarjeta="<div class='card'style='flex: 0 0 32%;text-align: center; height: 100%;'><div style='color:#65A4BE; background-color:white; font-size: 22px;' class='card-header'><b>$"+data.precio+"</b></div><img src='"+data.img+"' class='card-img-top' alt='...'><div class='card-body'><h5 class='card-title'>"+data.nombre_l+"</h5><p class='card-text' style='text-align:justify;height: 65%;';> "+data.descripcion+"</p><a href='"+data.ubicacion+"' style='background-color:#0C8218; width:100%' class='btn btn-success'><b>VER MAPA</b></a></div></div>"
+          let tarjeta="<div class='card'style='flex: 0 0 25%;text-align: center; height: 650px;'><div style='color:#65A4BE; background-color:white; font-size: 22px;' class='card-header'><b>$"+data.precio+"</b></div><img src='"+data.img+"' style=' max-height:290px; min-height:200px; height:30%;' class=card-img-top' alt='...'><div class='card-body'><h5 class='card-title'>"+data.nombre_l+"</h5><p class='card-text' style='text-align:justify;height: 65%;';> "+data.descripcion+"</p><a href='"+data.ubicacion+"' style='background-color:#0C8218; width:100%' class='btn btn-success'><b>VER MAPA</b></a></div></div>"
+
+          
+
+
+
+          //console.log(preciolugar);  
+          let htmlContent=result.innerHTML        
+          result.innerHTML=htmlContent+tarjeta
+          
+          
+          /*let htmlcontent=result.innerHTML;
+          result.innerHTML=htmlcontent+html*/
+        }
+
+      })}
+      
+      function filterByPrice(){
+      let resultf=document.getElementById("filter").value;
+      console.log("aca"+ resultf) 
+      let url="'http://localhost:8080/filtrarlugar/"
+      let resulturl=url+resultf+"'"
+      console.log(resulturl)
+      fetch(resulturl)
+      .then(response => response.json())
+      .then(json => {
+        console.log("acá va el dato"+json);
+
+        for(data of json){
+         console.log(data)
+      
+          let nombrelugar=data.nombre_l; 
+          let locationplace=data.ubicacion;
+          let descripcionlugar=data.descripcion;
+          let preciolugar=data.precio;
+          let imglugar=data.img;
+
+          let tarjeta="<div class='card'style='flex: 0 0 25%;text-align: center; height: 650px;'><div style='color:#65A4BE; background-color:white; font-size: 22px;' class='card-header'><b>$"+data.precio+"</b></div><img src='"+data.img+"' style=' max-height:290px; min-height:200px; height:30%;' class=card-img-top' alt='...'><div class='card-body'><h5 class='card-title'>"+data.nombre_l+"</h5><p class='card-text' style='text-align:justify;height: 65%;';> "+data.descripcion+"</p><a href='"+data.ubicacion+"' style='background-color:#0C8218; width:100%' class='btn btn-success'><b>VER MAPA</b></a></div></div>"
 
           
 
