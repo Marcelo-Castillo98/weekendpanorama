@@ -1,5 +1,5 @@
 
-/*function validar() {
+function validar() {
     let num = 0;
     if (document.getElementById("nombre_usuario").value == "") {
         num++
@@ -11,16 +11,16 @@
    
     return num;
 }
-*/
+
 function envioDatoL() {
                      
 
 
-   /* if (validar() > 0 ) {
+    if (validar() > 0 ) {
         swal("Ha ocurrido un error.", "Todos los campos son obligatorios.", "error");
     }
     else {
-*/
+
         let nombre_usuariov = document.getElementById('nombre_usuario').value;
         //console.log(nombre_usuariov)
         let clavev = document.getElementById('clave').value;
@@ -77,7 +77,7 @@ function envioDatoL() {
 
 
     }
-
+}
     function verifyIsLogin(pageIsLoginRedirect = 'false',currentPage='default'){
 	
         let isLoginUser = localStorage.getItem('isLoginUser');
@@ -119,6 +119,10 @@ function envioDatoL() {
         name.innerText = getDataUser().nombre;
     }
 
+
+
+
+    
 //}
 
 //-------------

@@ -8,12 +8,12 @@ body {
 }
 
 .login{
-    background: url(fondol.jpg);
+    background-image: url('../img/fondol.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
 .registro{
-    background: url(fondor.jpg);
+    background: url('../img/fondor.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 
