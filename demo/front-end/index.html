@@ -54,19 +54,18 @@
 
      <script>
       var current_page = 1;
-      var records_per_page = 2;
-     
+      var records_per_page = 3;
+      objJson = [];
       let cont=1;
 
       function mostrartodo(){
-      objJson = [];
       let result=document.getElementById("result");
       fetch('http://localhost:8080/filtrarlugar')
       .then(response => response.json())
       .then(json => {
       console.log(json);
        
-      cantdatos.innerHTML="<span class='border border-3'> Lugares encontrados : " + json.length; +"</span>"
+      cantdatos.innerHTML="<span> Lugares encontrados : " + json.length; +"</span>"
         
        for(data of json){
           console.log(data)
@@ -157,7 +156,7 @@ window.onload = function() {
 
 
       function filterByPrice(){
-      objJson = [];
+        objJson = [];
       let resultf=document.getElementById("filter").value;
       //console.log("aca"+ resultf) 
       cont=1;
