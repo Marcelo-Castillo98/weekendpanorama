@@ -127,7 +127,17 @@ function envioDatoL() {
 
 //-------------
 
+function lmostrarPassword() {
+    document.getElementById("clave").setAttribute("type", "text");
+    document.getElementById("imagen_off").style.display = "none";
+    document.getElementById("imagen_on").style.display = "inline";
+}
 
+function locultarPassword() {
+    document.getElementById("clave").setAttribute("type", "password");
+    document.getElementById("imagen_off").style.display = "inline";
+    document.getElementById("imagen_on").style.display = "none";
+}
 
 
 
