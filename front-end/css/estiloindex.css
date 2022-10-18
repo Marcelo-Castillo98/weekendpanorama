@@ -102,3 +102,18 @@ body{
     text-align:justify;
     height: 65%;
 }
+
+.page{    
+    float: right;
+    margin-right: 130px;
+    margin-top:20px;
+    margin-bottom:20px;
+    
+
+}
+.page button{
+    border-color:transparent;
+    background-color:transparent;
+    
+
+}

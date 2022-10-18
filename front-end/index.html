@@ -54,7 +54,7 @@
 
      <script>
       var current_page = 1;
-      var records_per_page = 2;
+      var records_per_page = 3;
       objJson = [];
       let cont=1;
 
@@ -75,7 +75,7 @@
           let preciolugar=data.precio;
           let imglugar=data.img;
 
-          let tarjeta="<div class='card'><div class='cardheader'><b>$"+data.precio+"</b></div><img src='"+data.img+"'class='cardimg'alt='...'><div class='card-body'><h5 class='card-title'>"+data.nombre_l+"</h5><p class='cardtext'> "+data.descripcion+"</p><a href='"+data.ubicacion+"' style='background-color:#0C8218; width:100%' class='btn btn-success'><b>VER MAPA</b></a></div></div>"
+          let tarjeta="<div class='card'><div class='cardheader'><b>$"+data.precio+"</b></div><img src='"+data.img+"'class='cardimg'alt='...'><div class='card-body'><h5 class='card-title'style='height:30px'>"+data.nombre_l+"</h5><p class='cardtext'> "+data.descripcion+"</p><a href='"+data.ubicacion+"' style='background-color:#0C8218; width:100%' class='btn btn-success'><b>VER MAPA</b></a></div></div>"
 
           
 //llena el objeto "objJson" con los parametros obtenido de la base de datos guardados en la variable tarjeta.
@@ -156,6 +156,7 @@ window.onload = function() {
 
 
       function filterByPrice(){
+        objJson = [];
       let resultf=document.getElementById("filter").value;
       //console.log("aca"+ resultf) 
       cont=1;
@@ -179,7 +180,7 @@ window.onload = function() {
           let preciolugar=data.precio;
           let imglugar=data.img;
 
-          let tarjeta="<div class='card'><div class='cardheader'><b>$"+data.precio+"</b></div><img src='"+data.img+"'class='cardimg'alt='...'><div class='card-body'><h5 class='card-title'>"+data.nombre_l+"</h5><p class='cardtext'> "+data.descripcion+"</p><a href='"+data.ubicacion+"' style='background-color:#0C8218; width:100%' class='btn btn-success'><b>VER MAPA</b></a></div></div>"
+          let tarjeta="<div class='card'><div class='cardheader'><b>$"+data.precio+"</b></div><img src='"+data.img+"'class='cardimg'alt='...'><div class='card-body'><h5 class='card-title' style='height:30px'>"+data.nombre_l+"</h5><p class='cardtext'> "+data.descripcion+"</p><a href='"+data.ubicacion+"' style='background-color:#0C8218; width:100%' class='btn btn-success'><b>VER MAPA</b></a></div></div>"
 
           
           
@@ -216,9 +217,16 @@ window.onload = function() {
     </div class="container-fluid">
     <div id="listingTable"></div>
     
-    <a href="javascript:prevPage()" id="btn_prev">Prev</a>
-    <a href="javascript:nextPage()" id="btn_next">Next</a>
-    page: <span id="page"></span>
+
+    
+    <!-- <a href="javascript:prevPage()" id="btn_prev">Prev</a> -->
+    <!--<a href="javascript:nextPage()" id="btn_next">Next</a> -->
+    <div class="page">
+      <button  type="button" id="btn_prev"> <img src="img/boton1.png" onclick="prevPage()"></button>
+      <button type="button" id="btn_next"> <img src="img/boton2.png" onclick="nextPage()"></button>
+      <span id="page"></span>
+    </div>
+
 
   </body>
 </html>

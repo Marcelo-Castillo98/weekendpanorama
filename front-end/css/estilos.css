@@ -23,7 +23,7 @@ body {
 
 }
 
-#contenedor {
+#container {
     display: flex;
     align-items: center;
     justify-content: center;   
@@ -41,7 +41,7 @@ body {
     margin-top: 25px;
 }
 
-.titulo {
+.title {
     font-size: 250%;
     color:#000000;
     text-align: center;
