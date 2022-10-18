@@ -1,5 +1,5 @@
 let current_page = 1;
-let records_per_page = 3;
+let records_per_page = 6;
 objJson = [];
 let cont=1;
 
@@ -77,6 +77,7 @@ page_span.innerHTML = page + "/" + numPages();
 
 
 if (page == 1) {
+
   btn_prev.style.visibility = "hidden";
 } else {
   btn_prev.style.visibility = "visible";
@@ -103,13 +104,17 @@ changePage(1);
 function filterByPrice(){
     
   objJson = [];
-  //changePage(1);
-  //current_page=1;
-  //changePage(current_page)
+
 let resultf=document.getElementById("filter").value;
 if(resultf.length >= 20){
     swal("Ha ocurrido un error.", "Has ingresado demasiados datos.", "error");
-}else{
+}
+else if(!resultf.match(/^\d+/)){
+    swal("Ha ocurrido un error.", "Solo se permiten numeros", "error");
+    }
+
+else{
+    
 //location.reload();
 //console.log("aca"+ resultf) 
 cont=1;
@@ -148,7 +153,9 @@ fetch('http://localhost:8080/filtrarlugar/'+resultf )
       
       //
       //changePage(current_page)
+     
       btn_prev.style.visibility = "hidden";
+      //btn_next.style.visibility = "hidden";
       page.style.visibility= "hidden";
 
       
