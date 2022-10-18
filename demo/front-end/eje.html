@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Weekend Panorama Temuco</title>
+    <link rel="stylesheet" href="css/estiloindex.css" />
+    <!-- CSS only -->
+    <script src="javaScript/javaslogin.js"></script>
+    
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi"
+      crossorigin="anonymous"
+    />
+
+  </head>
+
+  <body>
+
+    
+    <div id="result" class="container; col-lg-3"  style="display:flex; gap:15px; justify-content:center;
+    flex-wrap: wrap;padding-left: 0;margin-top:30px; height: 30%; width: 100%">   
+     <script>
+var current_page = 1;
+var records_per_page = 2;
+objJson = []; 
+
+
+// Can be obtained from another source, such as your objJson variable
+
+
+
+function mostrartodo(){
+      let result=document.getElementById("result");
+      fetch('http://localhost:8080/filtrarlugar')
+      .then(response => response.json())
+      .then(json => {
+
+        console.log(json);
+        
+        let cont=1;
+        for(data of json){
+        
+         console.log(data)
+          let tarjeta="<div class='card'style='flex: 0 0 25%;text-align: center; height: 650px;'><div style='color:#65A4BE; background-color:white; font-size: 22px;' class='card-header'><b>$"+data.precio+"</b></div><img src='"+data.img+"' style=' max-height:290px; min-height:200px; height:30%;' class=card-img-top' alt='...'><div class='card-body'><h5 class='card-title'>"+data.nombre_l+"</h5><p class='card-text' style='text-align:justify;height: 65%;';> "+data.descripcion+"</p><a href='"+data.ubicacion+"' style='background-color:#0C8218; width:100%' class='btn btn-success'><b>VER MAPA</b></a></div></div>"
+          
+          //llena el objeto "objJson" con los parametros obtenido de la base de datos guardados en la variable tarjeta.
+          objJson.push({ adName: tarjeta})
+          //al inicio muestra los datos de la primera pagina
+          if (cont<=records_per_page){
+            let htmlContent=result.innerHTML        
+            result.innerHTML=htmlContent+tarjeta
+            btn_prev.style.visibility = "hidden";
+          }
+          cont++
+
+          
+
+        }
+
+      })}
+      
+
+function prevPage()
+{
+    if (current_page > 1) {
+        current_page--;
+        changePage(current_page);
+    }
+}
+
+function nextPage()
+{
+    if (current_page < numPages()) {
+        current_page++;
+        changePage(current_page);
+    }
+}
+    
+function changePage(page)
+{
+    var btn_next = document.getElementById("btn_next");
+    var btn_prev = document.getElementById("btn_prev");
+    var listing_table = document.getElementById("listingTable");
+    var page_span = document.getElementById("page");
+ 
+    // Validate page
+    if (page < 1) page = 1;
+    if (page > numPages()) page = numPages();
+
+    result.innerHTML = "";
+
+    for (var i = (page-1) * records_per_page; i < (page * records_per_page) && i < objJson.length; i++) {
+        result.innerHTML += objJson[i].adName + "<br>";
+    }
+    page_span.innerHTML = page + "/" + numPages();
+
+    if (page == 1) {
+        btn_prev.style.visibility = "hidden";
+    } else {
+        btn_prev.style.visibility = "visible";
+    }
+
+    if (page == numPages()) {
+        btn_next.style.visibility = "hidden";
+    } else {
+        btn_next.style.visibility = "visible";
+    }
+}
+
+function numPages()
+{
+    return Math.ceil(objJson.length / records_per_page);
+}
+
+window.onload = function() {
+    changePage(1);
+};
+      
+     </script>
+
+    <script>
+    verifyIsLogin();
+    mostrartodo();
+    </script>
+    
+    </div class="container-fluid">
+    <div id="listingTable"></div>
+    <a href="javascript:prevPage()" id="btn_prev">Prev</a>
+    <a href="javascript:nextPage()" id="btn_next">Next</a>
+    page: <span id="page"></span>
+  </body>
+</html>
