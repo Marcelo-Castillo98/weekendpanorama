@@ -1,0 +1,80 @@
+<!doctype html>
+
+<html lang="es">
+
+<head>
+
+    <meta charset="utf-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title> My Weekend Panorama Web - Temuco </title>
+    
+    <!-- Link hacia el archivo de estilos css -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="css/estilos.css">
+
+</head>
+
+<body class="registro">
+    <div id="container">
+        <div id="central">
+            <div id="login">
+                <div class="title">
+                    Registrarse
+                </div>
+                <form id="loginform">
+                    <label for="username">Nombre de usuario*: </label>
+                    <input type="text" name="username" id="nombre_usuario" required>
+
+                    
+                    <div class="input-group mb-3">
+                        <label for="password">Contraseña*: </label>
+                        <input type="password" class="form-control" placeholder="******" aria-label="Password" id="clave" aria-describedby="basic-addon2">
+                        <span class="input-group-text" id="basic-addon2" style="height: 25px; background-color:transparent; position:absolute; top:31px; right:2px; border:0; z-index: 99;">
+                            <img id="imagen_off" src="img/view_off.png" alt="" onclick="mostrarPassword()">
+                            <img id="imagen_on" style="display: none;" src="img/view.png" alt="" onclick="ocultarPassword()">
+                       
+                        </span>
+                    </div>
+
+                    
+                    <div class="input-group mb-3">
+                        <label for="password">Repetir Contraseña*: </label>
+                        <input type="password" class="form-control" placeholder="******" aria-label="Password" id="rclave" aria-describedby="basic-addon2">
+                        <span class="input-group-text" id="rbasic-addon2" style="height: 25px; background-color:transparent; position:absolute; top:31px; right:2px; border:0; z-index: 99;">
+                            <img id="rimagen_off" src="img/view_off.png" alt="" onclick="rmostrarPassword()">
+                            <img id="rimagen_on" style="display: none;" src="img/view.png" alt="" onclick="rocultarPassword()">
+            
+                        </span>
+                    </div>
+                
+
+                    <label for="name">Nombre*: </label>
+                    <input type="text" name="name" id="nombre" required>
+
+                    <label for="surname">Apellido*: </label required>
+                    <input type="text" name="surname" id="apellido">
+
+                    <p>(*) Campos Obligatorios. </p>
+
+
+                    <button type="button" onclick="envioDato()">Registrarse</button>
+                </form>
+
+                <div class="pie-form">                        
+                    <a href="login.html"> Iniciar Sesión</a>
+                </div>
+
+                <script src="javaScript/javasregistro.js"></script>
+
+                
+
+
+            </div>
+
+        </div>
+    </div>
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+
+</html>
