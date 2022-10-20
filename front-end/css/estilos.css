@@ -1,0 +1,109 @@
+body {
+    font-family: 'Overpass', sans-serif;
+    font-weight: normal;
+    font-size: 100%;
+    color: black;   
+    margin: 0px;   
+}
+
+.banner{
+    width:100%;
+}
+
+
+.login{
+    background-image: url('../img/fondologinA.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.registro{
+    background: url('../img/fondoregistro.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+#container {
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+    margin: 0;
+    padding: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    width: 100%;
+    height: 100%;
+}
+
+#central {
+    max-width: 320px;
+    width: 100%;
+    margin-top: 25px;
+}
+
+.title {
+    font-size: 250%;
+    color:#000000;
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: Roboto, Oxygen, sans-serif;
+    font-style:normal;
+}
+
+#login {
+    width: 100%;
+    padding: 50px 30px;
+    background-color: rgba(255,255,255,0.65);   
+    border-radius: 10px;   
+    box-sizing: border-box;
+}
+
+#login input {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 110%;
+    color: #484848;    
+    display: flex;
+    width: 100%;
+    height: 40px;   
+    margin-bottom: 10px;
+    padding: 5px 5px 5px 10px;   
+    box-sizing: border-box;     
+    border: 2px rgb(22, 22, 22);   
+    border-radius: 5px;
+    
+}
+
+#login button {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 20px;
+    color:#ffffff;
+    width: 100%;
+    height: 40px;
+    border: none;   
+    border-radius: 3px 3px 3px 3px;
+    background-color: #0C8218;    
+    margin-top: 10px;
+}
+
+#login button:hover {
+    background-color: #2B940F;
+    color:#ffffff;
+}
+
+.pie-form {
+    font-size: 100%;
+    text-align: center;    
+    margin-top: 15px;
+}
+
+.pie-form a {
+    display: block;
+    text-decoration: none;
+    color: #000000;
+    margin-bottom: 3px;
+}
+
+.pie-form a:hover {
+    color: #2B940F;
+}
+
